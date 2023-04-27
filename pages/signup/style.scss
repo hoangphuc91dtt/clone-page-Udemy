@@ -1,0 +1,150 @@
+// sass ./pages/signup/style.scss ./pages/signup/style.css --watch
+
+@import '../../scss/base/base';
+
+@import '../../scss/layouts/main';
+@import '../../scss/layouts/header';
+@import '../../scss/layouts/footer';
+
+.sign-up {
+  padding: 4.8rem 2.4rem;
+  width: 40rem;
+  margin: 0 auto;
+  &__heading {
+    padding: 1.6rem 0;
+    @include heading4;
+  }
+  &__title a,
+  &__subline a {
+    @include heading4;
+  }
+  &__input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+  &__input {
+    width: 100%;
+    position: relative;
+    @include heading5;
+    @include dFlex;
+    border: 0.1rem solid $blackColor;
+    padding: 0 0.8rem;
+  }
+  &__input input {
+    width: 100%;
+    height: 6.2rem;
+    border: none;
+    outline: none;
+    padding: 2rem 1rem 0;
+    @include textBody1;
+  }
+  &__input label {
+    position: absolute;
+    pointer-events: none;
+    transition: 0.2s;
+    font-size: 1.6rem;
+    padding: 0 0.8rem;
+  }
+  &__input label.focus,
+  &__input input:valid ~ label,
+  &__input input:focus ~ label {
+    transform: translateY(-13px);
+    font-size: 1.4rem;
+  }
+  &__btn-signup {
+    @include btnPrimary($bgColor: $purpleMediumColor);
+    width: 100%;
+  }
+
+  &__support {
+    @include dFlexCol($just: space-between);
+    a {
+      @include buttonText($underline: 1);
+    }
+  }
+
+  &__title {
+    width: 100%;
+    padding: 1.6rem 0;
+    text-align: center;
+    border-bottom: 0.1rem solid $shadowColor;
+    font-size: 1.2rem;
+  }
+
+  &__subline {
+    text-align: center;
+    padding: 1.6rem 0;
+  }
+
+  &__propose {
+    @include dFlex(start, start);
+    gap: 0.4rem;
+    position: relative;
+    padding: 1.6rem 0;
+    user-select: none;
+    cursor: pointer;
+    list-style-type: none;
+
+    input {
+      position: absolute;
+      width: 0;
+      appearance: none;
+    }
+    .iconfa {
+      margin-top: 0.28rem;
+    }
+    &--check {
+      display: none;
+    }
+
+    input:checked ~ &--check {
+      display: block;
+    }
+
+    input:checked ~ &--no-check {
+      display: none;
+    }
+  }
+
+  &__checkpass {
+    display: flex;
+    flex-direction: row;
+    gap: 0.2rem;
+  }
+}
+
+.checkbox-pop {
+  display: none;
+}
+
+.checkbox-pop ~ label span {
+  display: inline-block;
+  width: 25px;
+  height: 19px;
+  margin: 0 5px -4px 0; /*layout relationship between check and label*/
+  &:before,
+  &:after {
+    transition: 0.3s ease-in-out;
+    content: '';
+    position: absolute;
+    z-index: 1;
+    width: 1.6rem;
+    height: 1.6rem;
+    background: transparent;
+    border: 2px solid $blackColor;
+  }
+  &:after {
+    z-index: 0;
+    border: none;
+  }
+}
+
+.checkbox-pop:checked ~ label span {
+  &:before {
+    animation: 0.3s ease;
+    z-index: 1;
+    background: $blackColor;
+  }
+}

@@ -1,0 +1,265 @@
+.my-learning {
+  &__top {
+    @include dFlex;
+
+    padding-bottom: 2.4rem;
+
+    @include maxWidth($small) {
+      @include dFlexCol(start, start, $gap: 0.8rem);
+    }
+
+    .heading-big {
+      padding: 0;
+    }
+
+    &--btn {
+      @include heading4($purpleDarkColor);
+      @include buttonText($underline: 1);
+    }
+  }
+
+  &__slider {
+    width: 100%;
+    position: relative;
+  }
+
+  &__list {
+    width: 100%;
+  }
+
+  .slick-track {
+    @include dFlex(start, start);
+  }
+
+  &__item {
+    margin: 0 0.8rem;
+    min-width: 12rem;
+    width: 42rem;
+    border: 1px solid #d1d7dc;
+
+    &:first-child {
+      margin-left: 0;
+    }
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+  .slick-initialized .slick-slide {
+    display: flex;
+  }
+
+  .slick-arrow {
+    &::before {
+      display: none;
+    }
+  }
+
+  .slick-disabled {
+    display: none !important;
+  }
+
+  &__item:not(&__reminder) {
+    cursor: pointer;
+  }
+
+  &__item:hover:not(&__reminder) &__content {
+    background-color: $lightColor;
+  }
+
+  &__reminder {
+    position: relative;
+
+    &--times {
+      position: absolute;
+      top: 0.8rem;
+      right: 1.4rem;
+      font-size: 1.8rem;
+    }
+  }
+
+  &__reminder &__thumbnail {
+    overflow: visible;
+
+    &::after {
+      display: none;
+    }
+
+    img {
+      height: 15rem;
+      width: 12rem;
+      object-fit: contain;
+      padding: 0.8rem;
+    }
+  }
+
+  &__thumbnail {
+    height: 15rem;
+    width: 12rem;
+    position: relative;
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(28, 29, 31, 0.5);
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    &--btn {
+      @include dFlex(center);
+
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 2.4rem;
+      width: 4.8rem;
+      height: 4.8rem;
+      border-radius: 9999px;
+      background-color: $whiteColor;
+      z-index: 2;
+    }
+  }
+
+  &__content {
+    @include dFlexCol($align: start);
+
+    flex: 1;
+    padding: 1.6rem;
+
+    &--heading {
+      margin-top: 0.8rem;
+
+      @include textOverflowEllipsis(1);
+    }
+
+    &--sub-heading {
+      @include heading4($grayColor);
+
+      font-size: 1.2rem;
+      margin-right: 1.6rem;
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-line-clamp: 1;
+      -webkit-box-orient: vertical;
+    }
+  }
+
+  &__reminder &__content {
+    display: block;
+
+    &--text {
+      padding: 0.8rem 0;
+      @include textOverflowEllipsis(2);
+    }
+
+    &--btn {
+      @include heading5($purpleDarkColor);
+    }
+  }
+
+  &__lecture-progress {
+    @include textBody2($grayColor);
+
+    &--bold {
+      font-weight: 700;
+    }
+  }
+
+  &__btn-control {
+    position: absolute;
+    z-index: 2;
+    border: 0;
+    padding: 0;
+    min-width: 4.8rem;
+    height: 4.8rem;
+    border: 1px solid #6a6f73;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08), 0 4px 12px rgba(0, 0, 0, 0.08);
+    border-radius: 999px;
+    background-color: $blackColor;
+
+    &:hover {
+      background-color: $blackMediumColor;
+    }
+  }
+
+  &__btn-prev {
+    left: 0;
+    top: 50%;
+    transform: translate(-50%, -50%);
+
+    @include maxWidth($medium) {
+      transform: translate(-30%, -50%);
+    }
+  }
+
+  &__btn-next {
+    right: 0;
+    top: 50%;
+    transform: translate(50%, -50%) rotate(180deg);
+
+    @include maxWidth($medium) {
+      transform: translate(30%, -50%);
+    }
+  }
+
+  .slider__arrow {
+    background-color: transparent;
+  }
+
+  &__training-people {
+    @include dFlex;
+
+    margin-top: 4.8rem;
+    padding: 1.6rem;
+    color: $whiteColor;
+    background-color: $blackColor;
+
+    &--text {
+      @include textBody1($whiteColor);
+
+      span {
+        font-weight: 700;
+      }
+    }
+
+    @include maxWidth($medium) {
+      @include dFlexCol($gap: 0.8rem);
+    }
+  }
+
+  &__training-people-btn {
+    @include dFlex($gap: 0.8rem);
+
+    a {
+      @include btnPrimary($whiteColor, $blackColor);
+    }
+
+    button {
+      @include btnPrimary;
+    }
+
+    a,
+    button {
+      font-size: 1.4rem;
+
+      @include maxWidth($medium) {
+        width: 100%;
+      }
+    }
+
+    @include maxWidth($medium) {
+      @include dFlexCol($gap: 0.8rem);
+      width: 100%;
+    }
+  }
+}

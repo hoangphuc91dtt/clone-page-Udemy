@@ -1,0 +1,213 @@
+.drawer {
+  position: relative;
+
+  $widthDrawer: 28rem;
+
+  &--title {
+    @include heading5($grayColor);
+
+    padding: 1.6rem 1.6rem 0;
+  }
+
+  &--text {
+    @include textBody1;
+
+    text-align: left;
+  }
+
+  &__line {
+    display: block;
+    width: 100%;
+    height: 0.8px;
+    background-color: $shadowColor;
+  }
+
+  &__side-wrapper {
+    @include position(fixed, 0, auto, 0, 0, $zIndex: 9999);
+    overflow-y: scroll;
+    overflow-x: hidden;
+    background-color: $whiteColor;
+    padding-bottom: 3.2rem;
+    background-color: $whiteColor;
+    height: 100vh;
+    transform: translateX(-100%);
+    transition: 0.3s;
+  }
+
+  &__side {
+    width: $widthDrawer;
+  }
+
+  &__side-btn,
+  &__level-2--btn {
+    @include dFlex;
+
+    width: 100%;
+    background-color: $lightColor;
+  }
+
+  &__learn,
+  &__side-btn,
+  &__level-2--btn,
+  &__link,
+  &__level-2-link {
+    padding: 0.8rem 1.6rem;
+  }
+
+  &__btn {
+    display: none;
+    padding: 0.8rem 0;
+  }
+
+  &__btn &__link {
+    @include textBody1($purpleDarkColor);
+  }
+
+  &__user {
+    @include dFlex;
+
+    width: 100%;
+    padding: 0.8rem 0;
+    background-color: $lightColor;
+
+    &--name {
+      @include heading4;
+    }
+
+    &--welcome {
+      @include textBody2($grayColor);
+    }
+  }
+
+  &__user-avatar {
+    width: 6.2rem;
+    height: 6.2rem;
+    border-radius: 9999px;
+    border: 1px solid $shadowColor;
+  }
+
+  &__user-content {
+    @include dFlexCol(start, start);
+
+    flex: 1;
+    margin-left: 1.6rem;
+  }
+
+  &__icon-arrow {
+    @include dFlex(center);
+    width: 2rem;
+    height: 2rem;
+  }
+
+  &__link,
+  &__level-2-link {
+    display: block;
+  }
+
+  &__list {
+    list-style: none;
+    padding: 0.8rem 0;
+  }
+
+  &__list &__side-btn {
+    background-color: transparent;
+  }
+
+  &__btn-language {
+    @include btnPrimary($color: $blackColor, $borderColor: $blackColor);
+    @include textBody1;
+    @include dFlex(start, $gap: 0.8rem);
+
+    margin: 0.8rem 1.6rem;
+    padding: 0 1.6rem;
+    min-width: 14rem;
+    min-height: 4rem;
+  }
+
+  &__level-2 {
+    @include position(absolute, 0, 0, 0, 0);
+    width: 100%;
+    height: 100%;
+    background-color: $whiteColor;
+    transform: translateX(150%);
+    opacity: 0;
+    visibility: hidden;
+    overflow-x: hidden;
+    transition: 0.3s;
+
+    &.show {
+      transform: translateX(0);
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+
+  &__level-2-list {
+    list-style: none;
+  }
+
+  &__level-2--btn {
+    @include dFlex(start, $gap: 1.6rem);
+
+    padding: 1.6rem;
+  }
+
+  &__close {
+    @include dFlex(center);
+    @include position(fixed, 0, $left: $widthDrawer, $zIndex: 9999);
+    margin: 16px;
+    width: 48px;
+    height: 48px;
+    font-size: 18px;
+    border-radius: 9999px;
+    opacity: 0;
+    transform: scale(0);
+    transition: 0.3s;
+    transition-delay: 0.1s;
+  }
+
+  &__overlay {
+    @include position(fixed, 0, 0, 0, 0, $zIndex: 999);
+
+    width: 100vw;
+    height: 100vh;
+    opacity: 0;
+    visibility: hidden;
+    background: rgba(28, 29, 31, 0.8);
+    transition: 0.2s;
+    cursor: pointer;
+  }
+
+  &.overflow &__side {
+    transition: 0.3s;
+    overflow: hidden;
+  }
+
+  &.show &__side-wrapper {
+    transform: translateX(0);
+    transition: 0.3s;
+  }
+
+  &.show &__close {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  &.show &__overlay {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  &.no-login &__user {
+    display: none;
+  }
+
+  &.no-login &__btn {
+    display: block;
+  }
+
+  ::-webkit-scrollbar {
+    width: 0;
+    background: transparent;
+  }
+}

@@ -1,0 +1,104 @@
+@font-face {
+  font-family: 'SuisseWorks';
+  font-style: normal;
+  font-weight: 700;
+  src: url('../../public/fonts/SuisseWorks-Bold-v1.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Academy-Sans';
+  font-style: normal;
+  font-weight: 700;
+  src: url('../../public/fonts/Academy-Sans-Bold-v1.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Academy-Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../../public/fonts/Academy-Sans-Regular-v1.woff2') format('woff2');
+}
+
+@mixin fontSuisseWorks() {
+  font-family: 'SuisseWorks', Georgia, 'Times New Roman', Times, serif;
+}
+
+@mixin fontAcademySans() {
+  font-family: 'Academy-Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+@mixin fontStyle(
+  $fontWeight: 700,
+  $fontSize: 3.2rem,
+  $lineHeight: 1.25,
+  $letterSpacing: -0.05rem,
+  $textColor: $color
+) {
+  font-weight: $fontWeight;
+  font-size: $fontSize;
+  line-height: $lineHeight;
+  letter-spacing: $letterSpacing;
+  color: $textColor;
+}
+
+@mixin heading1($color: $blackColor, $fontFamily: 'SW') {
+  @if $fontFamily == 'SW' {
+    @include fontSuisseWorks();
+  }
+
+  @if $fontFamily == 'US' {
+    @include fontAcademySans();
+  }
+  @include fontStyle($textColor: $color);
+}
+
+@mixin heading2($color: $blackColor) {
+  @include fontAcademySans();
+  @include fontStyle($fontSize: 2.4rem, $textColor: $color);
+}
+
+@mixin heading3($color: $blackColor) {
+  @include fontAcademySans();
+  @include fontStyle(
+    $fontSize: 1.9rem,
+    $lineHeight: 1.2,
+    $letterSpacing: -0.02rem,
+    $textColor: $color
+  );
+}
+
+@mixin heading4($color: $blackColor) {
+  @include fontAcademySans();
+  @include fontStyle(
+    $fontSize: 1.6rem,
+    $lineHeight: 1.2,
+    $letterSpacing: -0.02rem,
+    $textColor: $color
+  );
+}
+
+@mixin heading5($color: $blackColor) {
+  @include fontAcademySans();
+  @include fontStyle(
+    $fontSize: 1.4rem,
+    $lineHeight: 1.2,
+    $letterSpacing: -0.02rem,
+    $textColor: $color
+  );
+}
+
+@mixin textBody1($color: $blackColor) {
+  @include fontAcademySans();
+  @include fontStyle(400, 1.6rem, 1.4, 0, $textColor: $color);
+}
+
+@mixin textBody2($color: $blackColor) {
+  @include fontAcademySans();
+  @include fontStyle(400, 1.4rem, 1.4, 0, $textColor: $color);
+}
+
+@mixin textBody3($color: $blackColor) {
+  @include fontAcademySans();
+  @include fontStyle(400, 1.2rem, 1.4, 0, $textColor: $color);
+} ;

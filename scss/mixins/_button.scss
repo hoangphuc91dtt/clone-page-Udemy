@@ -1,0 +1,58 @@
+@mixin btnPrimary($bgColor: transparent, $color: $whiteColor, $borderColor: $whiteColor, $height: 4.8rem) {
+  @include heading3($color);
+
+  min-width: 8rem;
+  padding: 0 1.2rem;
+  height: $height;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $bgColor;
+  border: 1px solid $borderColor;
+  user-select: none;
+  -webkit-user-select: none;
+  vertical-align: bottom;
+  white-space: nowrap;
+  cursor: pointer;
+
+  @if $bgColor == transparent {
+    &:hover {
+      background-color: rgba($whiteColor, 0.08);
+    }
+  }
+
+  @if $bgColor == $purpleMediumColor {
+    &:hover {
+      background-color: $purpleDarkMediumColor;
+    }
+  }
+
+  @if $borderColor == $blackColor {
+    &:hover {
+      background-color: rgba($blackColor, 0.04);
+    }
+  }
+}
+
+@mixin buttonText($color: $purpleDarkColor, $underline: 0) {
+  @include heading5($color);
+  background-color: transparent;
+
+  &:hover {
+    color: $purpleHoverColor;
+  }
+
+  @if $underline == 1 {
+    text-decoration: underline;
+    text-underline-offset: 0.4rem;
+  }
+}
+
+@mixin btnGray($color: gray) {
+  @include heading5($color);
+  background-color: transparent;
+  border: 1px solid $color;
+  &:hover {
+    color: gray;
+  }
+}

@@ -1,0 +1,125 @@
+.footer {
+  background-color: $blackColor;
+
+  &--heading {
+    @include heading3($whiteColor);
+
+    a {
+      color: $purpleLightColor;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  &--text {
+    @include textBody2($whiteColor);
+
+    @include maxWidth($large) {
+      margin-top: 0.8rem;
+    }
+  }
+
+  &__btn {
+    @include btnPrimary;
+    @include dFlex($gap: 0.8rem);
+
+    @include maxWidth($large) {
+      margin-top: 1.6rem;
+    }
+  }
+
+  &__btn-language {
+    @include textBody1($whiteColor);
+
+    padding-right: 3.2rem;
+  }
+
+  &__row {
+    @include dFlex;
+
+    padding: 1.6rem 4.8rem;
+    border-bottom: 1px solid $blackLightColor;
+
+    @include maxWidth($large) {
+      @include dFlexCol($align: start);
+    }
+
+    @include maxWidth($cartSmall) {
+      padding: 1.6rem;
+    }
+  }
+
+  &__text-and-logo {
+    @include maxWidth($large) {
+      @include dFlexCol($align: start);
+    }
+  }
+
+  &__logo {
+    @include dFlex;
+
+    width: 14rem;
+  }
+
+  &__partner-logos {
+    @include dFlex($gap: 3.2rem);
+
+    @include maxWidth($large) {
+      margin: 1.2rem 0;
+    }
+
+    @include maxWidth($medium) {
+      @include dFlexCol($align: start);
+    }
+  }
+
+  &__category-wrapper {
+    align-items: start;
+  }
+
+  &__category-wrapper &__row {
+    @include maxWidth($large) {
+      @include dFlexCol(start, start, $direction: row);
+
+      padding: 1.6rem 0;
+    }
+
+    @include maxWidth($medium) {
+      @include dFlexCol;
+
+      padding: 2.4px 0;
+    }
+  }
+
+  &__category {
+    @include dFlexCol(start, start, 0.8rem);
+
+    width: 25.6rem;
+
+    @include maxWidth($exLarge) {
+      width: 22.6rem;
+    }
+
+    @include maxWidth($large) {
+      width: 20rem;
+    }
+
+    a {
+      @include textBody2($whiteColor);
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  &__bottom {
+    padding: 3.2rem auto;
+  }
+
+  .border-none {
+    border: 0;
+  }
+}

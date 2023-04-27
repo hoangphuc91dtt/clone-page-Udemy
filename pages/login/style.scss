@@ -1,0 +1,95 @@
+// sass ./pages/login/style.scss ./pages/login/style.css --watch
+@import '../../scss/base/base';
+@import '../../scss/base/animations';
+
+@import '../../scss/layouts/main';
+@import '../../scss/layouts/header';
+@import '../../scss/layouts/footer';
+
+.login {
+  padding: 4.8rem 2.4rem;
+  width: 40rem;
+  margin: 0 auto;
+  &__heading {
+    padding: 1.6rem 0;
+    @include heading4;
+  }
+  &__title a,
+  &__subline a {
+    @include heading4;
+  }
+
+  &__box {
+    width: 100%;
+    @include btnPrimary($bgColor: transparent, $borderColor: $blackColor);
+    @include heading4($color: $blackColor);
+    gap: 1rem;
+    margin-bottom: 0.8rem;
+    justify-content: flex-start;
+    padding: 0 0.8rem;
+    &--icon {
+      width: 42px;
+      height: 42px;
+      @include dFlex($just: center);
+    }
+  }
+
+  &__input-group {
+    gap: 1rem;
+    display: flex;
+    margin-bottom: 1.4rem;
+    flex-direction: column;
+  }
+  &__input {
+    width: 100%;
+    @include dFlex;
+    @include heading5;
+    padding: 0 0.8rem;
+    position: relative;
+    border: 0.1rem solid $blackColor;
+  }
+  &__input input {
+    width: 100%;
+    height: 6.2rem;
+    border: none;
+    outline: none;
+    padding: 2rem 1rem 0;
+    @include textBody1;
+  }
+  &__input label {
+    position: absolute;
+    pointer-events: none;
+    transition: 0.2s;
+    font-size: 1.6rem;
+    padding: 0 0.8rem;
+  }
+  &__input label.focus,
+  &__input input:valid ~ label,
+  &__input input:focus ~ label {
+    transform: translateX(1px) translateY(-13px);
+  }
+
+  &__btn-login {
+    @include btnPrimary($bgColor: $purpleMediumColor);
+    width: 100%;
+  }
+
+  &__support {
+    @include dFlexCol($just: space-between);
+    a {
+      @include buttonText($underline: 1);
+    }
+  }
+
+  &__title {
+    width: 100%;
+    padding: 1.6rem 0;
+    text-align: center;
+    border-bottom: 0.1rem solid $shadowColor;
+  }
+
+  &__subline {
+    text-align: center;
+    padding: 1.6rem 0;
+  }
+}

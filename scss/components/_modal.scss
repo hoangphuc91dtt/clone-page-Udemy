@@ -1,0 +1,129 @@
+.modal {
+  @include position(fixed, 0, 0, auto, 0, 999);
+
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  opacity: 0;
+  visibility: hidden;
+
+  &.show {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  &__container {
+    @include dFlex(center);
+
+    min-height: 100%;
+    position: relative;
+  }
+
+  &__content {
+    margin: 10vh 0;
+    max-width: 60rem;
+    width: 100%;
+    background-color: $whiteColor;
+    padding: 2.4rem;
+    position: relative;
+    z-index: 999999;
+    transform: scale(0.8);
+    transition: 0.2s;
+
+    @include maxWidth($small) {
+      @include position(fixed, 0, 0, 0, 0, 99999);
+
+      margin: 0;
+      max-width: 100%;
+      overflow-y: auto;
+    }
+
+    &--heading {
+      @include heading3;
+
+      padding-bottom: 2.4rem;
+    }
+
+    &--text {
+      @include textBody1;
+    }
+  }
+
+  &.show &__content {
+    transform: scale(1);
+  }
+
+  &__row {
+    width: 100%;
+    height: 4.8rem;
+  }
+
+  &__btn-close {
+    @include dFlex(center);
+    @include position($top: 1.6rem, $right: 1.6rem);
+
+    padding: 0.8rem;
+    font-size: 2.4rem;
+    color: $blackColor;
+    background-color: transparent;
+  }
+
+  &__footer {
+    @include dFlex(end, stretch, 1.6rem);
+
+    margin-top: 3.2rem;
+    background-color: $whiteColor;
+
+    @include maxWidth($small) {
+      &.fixed {
+        @include position(fixed, auto, 0, 0, 0, 99999);
+
+        margin: 0;
+        padding: 1.6rem;
+        max-width: 100%;
+        box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.08), 0 -4px 12px rgba(0, 0, 0, 0.08);
+        overflow-y: auto;
+      }
+    }
+  }
+
+  &__btn-cancel {
+    @include heading4;
+
+    background-color: transparent;
+  }
+
+  &__btn-text {
+    @include btnPrimary($borderColor: $blackColor);
+    @include heading4;
+
+    border-color: transparent;
+  }
+
+  &__btn-submit {
+    @include btnPrimary($blackColor, $whiteColor, $blackColor);
+    @include heading4($whiteColor);
+
+    &:hover {
+      background-color: $blackMediumColor;
+    }
+
+    &:disabled {
+      background-color: $blackLightColor;
+    }
+  }
+
+  &__overlay {
+    @include position(fixed, 0, 0, 0, 0, 999);
+
+    background-color: rgba($blackColor, 0.6);
+    opacity: 0;
+    visibility: hidden;
+    cursor: pointer;
+  }
+
+  &.show &__overlay {
+    opacity: 1;
+    visibility: visible;
+  }
+}

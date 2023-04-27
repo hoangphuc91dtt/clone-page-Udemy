@@ -1,0 +1,19 @@
+@mixin dFlex($just: space-between, $align: center, $gap: 0) {
+  display: flex;
+  justify-content: $just;
+  align-items: $align;
+  gap: $gap;
+}
+
+@mixin dFlexCol($just: space-between, $align: center, $gap: 0, $direction: column) {
+  @include dFlex($just, $align, $gap);
+
+  flex-direction: $direction;
+}
+
+@mixin textOverflowEllipsis($line: 1) {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: $line;
+  -webkit-box-orient: vertical;
+}

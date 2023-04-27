@@ -1,0 +1,14 @@
+// sass ./style.scss ./style.css --watch
+
+@import './scss/base/base';
+@import './scss/base/animations';
+
+@import './scss/components/card';
+@import './scss/components/my-learning';
+@import './scss/components/slider';
+@import './scss/components/drawer';
+
+@import './scss/layouts/main';
+@import './scss/layouts/header';
+@import './scss/layouts/navigation';
+@import './scss/layouts/footer';

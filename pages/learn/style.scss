@@ -1,0 +1,1971 @@
+// sass ./pages/learn/style.scss ./pages/learn/style.css --watch
+
+@import '../../scss/base/base';
+@import '../../scss/base/animations';
+
+@import '../../scss/components/modal';
+
+@import '../../scss/layouts/main';
+@import '../../scss/layouts/footer';
+
+$widthSidebar: 30rem;
+
+.learn {
+  width: 100%;
+  height: 100%;
+
+  &__header {
+    width: 100%;
+    height: 5.5rem;
+    @include dFlex;
+    background-color: $whiteColor;
+    position: relative;
+    gap: 1rem;
+    padding: 0 2.4rem;
+    background-color: rgb(0, 0, 0);
+    @include textBody1($color: $whiteColor);
+    line-height: 0.4rem;
+  }
+
+  &__content,
+  &__footer {
+    width: 75%;
+
+    @include maxWidth($exLarge) {
+      width: calc(100% - $widthSidebar);
+    }
+
+    @include maxWidth($large) {
+      width: 100%;
+    }
+  }
+
+  &__logo {
+    @include dFlex(center, center);
+    border-right: 0.1rem solid $shadowColor;
+    padding-right: 1.6rem;
+
+    img {
+      width: 9rem;
+      line-height: 5.5rem;
+    }
+
+    @include maxWidth($small) {
+      display: none;
+    }
+  }
+
+  &__rating,
+  &__progress {
+    @include dFlex;
+    gap: 0.6rem;
+    i {
+      border-radius: 50%;
+      border: 0.1rem solid $shadowColor;
+      padding: 1rem;
+    }
+  }
+  &__rating {
+    @include maxWidth($medium) {
+      display: none;
+    }
+  }
+  &__progress--title {
+    @include maxWidth($large) {
+      display: none;
+    }
+  }
+  &__btn-share {
+    @include btnPrimary($height: 4rem);
+    @include heading5($whiteColor);
+  }
+  &__btn-dot {
+    @include btnPrimary($height: 4rem);
+    @include heading5($whiteColor);
+
+    min-width: auto;
+  }
+
+  &__heading {
+    @include textOverflowEllipsis(1);
+
+    line-height: 5.5rem;
+    flex: 1;
+  }
+  &__divier {
+    height: 50%;
+    padding: 0.5rem 0;
+    background-color: whiteColor;
+    text-shadow: none;
+
+    @include maxWidth($small) {
+      display: none;
+    }
+  }
+
+  &__fold {
+    @include dFlex;
+    gap: 1.2rem;
+
+    @include maxWidth($small) {
+      display: none;
+    }
+  }
+
+  &__arrow-back {
+    font-size: 2.2rem;
+    display: none;
+
+    @include maxWidth($small) {
+      display: block;
+    }
+  }
+
+  // Tools
+  &__tools &--heading-md {
+    padding-top: 3.2rem;
+    padding-bottom: 1.6rem;
+  }
+
+  &__tools &--text-small {
+    padding-top: 0.8rem;
+  }
+
+  &__tools &--heading-sm {
+    padding-top: 2.4rem;
+    padding-bottom: 0.8rem;
+  }
+
+  &__tools-btn-primary {
+    @include btnPrimary($purpleMediumColor, $whiteColor, $purpleMediumColor);
+    @include heading4($whiteColor);
+
+    margin-top: 1.6rem;
+  }
+
+  &__tools-icon-plus {
+    @include dFlex(center);
+
+    margin-left: 0.4rem;
+    font-size: 2rem;
+  }
+
+  &__tools-form {
+    max-width: 46rem;
+    width: 100%;
+  }
+
+  &__tools-form-select {
+    display: block;
+    width: 100%;
+    margin-right: 1.6rem;
+    margin-bottom: 0.8rem;
+    position: relative;
+
+    &::after {
+      @include position($top: 50%, $right: 1.6rem);
+
+      content: '';
+      display: block;
+      background: url('https://api.iconify.design/ic/baseline-keyboard-arrow-down.svg') no-repeat center center /
+        contain;
+      width: 2.4rem;
+      height: 2.4rem;
+      pointer-events: none;
+      transform: translateY(-50%);
+    }
+  }
+
+  &__tools-form-select &__tools-form-input {
+    width: 100%;
+    appearance: none;
+    background-color: $whiteColor;
+    cursor: pointer;
+
+    &:hover {
+      background-color: rgba($blackColor, 0.04);
+
+      @include maxWidth($small) {
+        background-color: transparent;
+      }
+    }
+  }
+
+  &__tools-form-input {
+    @include textBody1;
+
+    height: 4.8rem;
+    padding: 0 1.6rem;
+    outline: none;
+    border: 0.1rem solid $blackColor;
+    border-radius: 0;
+  }
+
+  &__tools-form-submit {
+    @include btnPrimary($blackColor, $whiteColor, $blackColor);
+    @include heading4($whiteColor);
+
+    &:hover {
+      background-color: $blackMediumColor;
+    }
+  }
+
+  &__tools-form-group {
+    @include dFlex(start);
+
+    @include maxWidth($small) {
+      @include dFlexCol(start, stretch, 0.8rem);
+    }
+  }
+
+  &__tools--progress-text {
+    @include textBody2($grayColor);
+
+    margin-bottom: 1.6rem;
+  }
+
+  &__tools-modal-form &__tools-form-input {
+    width: 100%;
+  }
+
+  &__tools-modal-form-group {
+    position: relative;
+    margin: 1.6rem 0;
+  }
+
+  &__tools-form-label {
+    @include dFlex(start, $gap: 0.8rem);
+
+    width: 100%;
+    padding-bottom: 0.8rem;
+    cursor: pointer;
+  }
+
+  &__tools-form-radios &__tools-form-label {
+    @include textBody2;
+
+    padding: 0.8rem 0;
+  }
+
+  &__tools-form-radio {
+    appearance: none;
+    position: relative;
+
+    &::before {
+      display: block;
+      content: '';
+      width: 1.6rem;
+      height: 1.6rem;
+      border-radius: 50%;
+      border: 0.2rem solid $blackColor;
+    }
+
+    &:checked::after {
+      display: block;
+      position: absolute;
+      top: 50%;
+      right: 50%;
+      transform: translate(50%, -50%);
+      content: '';
+      width: 0.8rem;
+      height: 0.8rem;
+      border-radius: 50%;
+      background-color: $blackColor;
+    }
+  }
+
+  &__tools-modal-form &--text-small {
+    margin-left: 0.4rem;
+  }
+
+  &--text-right {
+    flex: 1;
+    text-align: end;
+  }
+
+  &__tools-form-search {
+    padding-left: 3.2rem;
+  }
+
+  &__tools-icon-search {
+    @include dFlex(center);
+    @include position($top: 50%, $left: 0.8rem);
+
+    font-size: 2.2rem;
+    transform: translateY(-50%);
+  }
+
+  &__tools-form-list,
+  &__tools-form-list-sub {
+    @include dFlex(start, $gap: 0.8rem);
+
+    flex-wrap: wrap;
+  }
+
+  &__tools-form-list-sub {
+    margin-top: 1.6rem;
+    display: none;
+
+    &.active {
+      display: flex;
+    }
+  }
+
+  &__tools-form-end {
+    &.hidden {
+      display: none;
+    }
+  }
+
+  &__tools-form-item &__tools-form-checkbox {
+    appearance: none;
+  }
+
+  &__tools-form-item &__tools-form-checkbox:checked + &__tools-form-label {
+    &::before {
+      content: '';
+      display: block;
+      background: url('https://api.iconify.design/material-symbols/check.svg?color=white') no-repeat center center /
+        2rem;
+      width: 1.6rem;
+      height: 1.6rem;
+    }
+  }
+
+  &__tools-form-item &__tools-form-checkbox:checked + &__tools-form-label,
+  &__tools-form-item &__tools-form-radio:checked + &__tools-form-label {
+    color: $whiteColor;
+    background-color: $blackColor;
+  }
+
+  &__tools-reminder {
+    @include dFlex(start, start);
+
+    @include maxWidth($xSmall) {
+      @include dFlexCol(start, stretch);
+    }
+  }
+
+  &__tools-reminder &__tools-form-select {
+    margin: 0;
+    max-width: 16.6rem;
+
+    @include maxWidth($xSmall) {
+      max-width: 100%;
+    }
+  }
+
+  &__tools-reminder-number {
+    width: 8rem !important;
+    border-left: 0;
+    border-right: 0;
+
+    @include maxWidth($xSmall) {
+      width: 100% !important;
+      border: 0.1rem solid $blackColor;
+      border-top: 0;
+      border-bottom: 0;
+    }
+  }
+
+  &__tools-banner {
+    @include dFlex(start, start, 0.8rem);
+
+    padding: 1.6rem;
+    margin-bottom: 1.6rem;
+    border: 0.1rem solid $shadowColor;
+    background-color: $lightColor;
+
+    &--heading {
+      @include heading4;
+    }
+  }
+
+  &__tools-banner-list {
+    @include dFlexCol(start, start);
+
+    margin-top: -0.4rem;
+  }
+
+  &__tools-banner-text {
+    @include dFlex(start, $gap: 0.4rem);
+  }
+
+  &__tools-banner-icon {
+    @include dFlex(center);
+
+    font-size: 2.4rem;
+  }
+
+  &__tools-form-label-lg {
+    padding-bottom: 1.6rem;
+  }
+
+  &__tools-form-item {
+    @include dFlex(start);
+  }
+
+  &__tools-form-item &__tools-form-radio {
+    appearance: none;
+    &::before,
+    &:checked::after {
+      display: none;
+    }
+  }
+
+  &__tools-form-item &__tools-form-label {
+    @include btnPrimary($color: $blackColor, $borderColor: $blackColor);
+    @include heading4;
+
+    border-radius: 9999px;
+    min-width: auto;
+  }
+
+  &__tools-form-time::after {
+    background: url('https://api.iconify.design/ic/outline-schedule.svg') no-repeat center center / contain;
+  }
+
+  &__tools-form-date::after {
+    background: url('https://api.iconify.design/icon-park-outline/calendar-thirty.svg') no-repeat center center /
+      contain;
+  }
+
+  &__tools-form-time,
+  &__tools-form-date {
+    @include textBody1($grayColor);
+
+    min-height: 4.8rem;
+    max-width: 18rem;
+    width: 100%;
+    padding: 0 1.6rem;
+    outline: none;
+    border-radius: 0;
+    border: 0.1rem solid $blackColor;
+    appearance: none;
+    background-color: $whiteColor;
+    position: relative;
+    background-image: none;
+
+    &::-webkit-calendar-picker-indicator {
+      background: none;
+    }
+
+    &::after {
+      @include position($top: 50%, $right: 1.6rem);
+      content: '';
+      width: 2.4rem;
+      height: 2.4rem;
+      transform: translateY(-50%);
+      pointer-events: none;
+    }
+
+    @include maxWidth($xSmall) {
+      max-width: 100%;
+    }
+  }
+
+  &__tools-reminder--text-small {
+    @include textBody3;
+
+    padding-bottom: 1.6rem;
+  }
+
+  &__tools-form-date {
+    max-width: 100%;
+  }
+
+  &__tools-connect {
+    @include dFlex(start, $gap: 1.6rem);
+
+    @include maxWidth($small) {
+      @include dFlexCol(start, stretch);
+    }
+  }
+
+  &__tools-connect-btn {
+    @include btnPrimary($borderColor: $blackColor);
+    @include heading4;
+
+    margin-bottom: 0.8rem;
+  }
+
+  &__tools-connect-icon {
+    @include dFlex(center);
+
+    font-size: 2.4rem;
+    margin-right: 0.8rem;
+  }
+}
+
+.content {
+  width: 100%;
+
+  &__video {
+    width: 100%;
+
+    video {
+      width: 100%;
+      height: 100%;
+      background-color: $blackColor;
+    }
+  }
+
+  &__bottom {
+    width: 100%;
+  }
+
+  &__tab {
+    display: none;
+
+    &--ask,
+    &--askmore,
+    &--note,
+    &--note-time,
+    &--search,
+    &--announ,
+    &--reviews,
+    &--course,
+    &--question-ralates-1,
+    &--question-ralates-2,
+    &--tools {
+      margin: 0 auto;
+      max-width: 84.8rem;
+      padding: 3.2rem 2.4rem 0;
+      margin-bottom: 9.6rem;
+    }
+
+    &--overview {
+      padding: 1.6rem 0 2.8rem;
+      @include maxWidth($large) {
+        width: 100%;
+      }
+    }
+  }
+
+  &__tab--container {
+    max-width: 100%;
+    max-height: 80rem;
+    overflow: hidden;
+    padding: 0 1.6rem;
+
+    -webkit-mask-image: linear-gradient(#ffffff, #ffffff, rgba(255, 255, 255, 0));
+    @include maxWidth($large) {
+      width: 100%;
+    }
+    &.open {
+      overflow: visible;
+      max-height: 100%;
+      -webkit-mask-image: none;
+    }
+  }
+
+  &__nav {
+    padding: 0 1.6rem;
+    overflow: hidden;
+    width: 100%;
+
+    &--overflow {
+      @include dFlex($just: flex-start, $gap: 2.4rem);
+      @include heading5($color: $grayColor);
+      width: 100%;
+      height: 5rem;
+      border-bottom: 0.1rem solid $shadowColor;
+
+      @include maxWidth($small) {
+        overflow-x: auto;
+        scrollbar-width: none;
+
+        &::-webkit-scrollbar {
+          display: none;
+        }
+      }
+    }
+  }
+
+  &__nav-button {
+    white-space: nowrap;
+    line-height: 4.8rem;
+    cursor: pointer;
+
+    &.active {
+      border-bottom: 0.2rem solid $blackColor;
+      color: $blackColor;
+      display: flex;
+    }
+    &:hover {
+      color: $blackColor;
+    }
+
+    &--search {
+      outline: none;
+      border-radius: 0;
+      padding: 0 0.2rem;
+      height: 100%;
+
+      @include dFlex(center);
+
+      &:active {
+        color: $blackColor;
+      }
+    }
+  }
+
+  &__tab-course {
+    display: none;
+
+    @include maxWidth($large) {
+      display: block;
+    }
+  }
+
+  &__banner {
+    padding: 1.6rem;
+    border: 0.1rem solid $shadowColor;
+
+    @include dFlex(flex-start, flex-start, 1.6rem);
+
+    &--heading {
+      margin-bottom: 0.4rem;
+
+      @include heading4;
+    }
+
+    &--module {
+      max-width: 48rem;
+      width: 100%;
+    }
+
+    &--tbody {
+      margin-bottom: 1.6rem;
+    }
+
+    &--btn {
+      gap: 1rem;
+    }
+
+    &--btn-start {
+      @include btnPrimary($bgColor: $blackColor);
+      @include heading5($whiteColor);
+    }
+
+    &--btn-dismiss {
+      @include btnPrimary($color: $blackColor);
+      @include heading5;
+    }
+  }
+
+  // tab Overview
+  &__overview {
+    border-bottom: 0.1rem solid $shadowColor;
+    padding: 3.2rem 2.4rem;
+
+    &--heading {
+      @include heading3;
+      margin-bottom: 1.6rem;
+    }
+  }
+
+  &__infor-header {
+    padding: 2.5rem 2.4rem;
+    border-bottom: 0.1rem solid $shadowColor;
+    @include dFlex($just: flex-start, $align: none);
+
+    @include maxWidth($large) {
+      @include dFlexCol(start, start);
+    }
+
+    &--colum1 {
+      width: 25%;
+    }
+
+    &--colum2 {
+      width: 30%;
+    }
+
+    &--colum3 {
+      width: 35%;
+    }
+  }
+  &__infor--footer {
+    padding: 2.5rem 2.4rem;
+    border-bottom: none;
+    @include dFlex($just: flex-start, $align: none);
+    &--colum1 {
+      width: 25%;
+    }
+    &--colum2 {
+      width: 75%;
+
+      ul {
+        padding-left: 2.4rem;
+        margin-top: 1.6rem;
+      }
+    }
+  }
+  &__infor {
+    padding: 2.5rem 2.4rem;
+    border-bottom: 0.1rem solid $shadowColor;
+    @include dFlex($just: flex-start, $align: none);
+    &--colum1 {
+      width: 25%;
+    }
+    &--colum2 {
+      width: 75%;
+      ul {
+        list-style: none;
+        margin-top: 1.6rem;
+      }
+
+      li::before {
+        content: '\f111';
+        font-family: 'FontAwesome';
+        font-size: 0.8rem;
+        margin-right: 1.6rem;
+      }
+    }
+
+    &--heading {
+      @include heading3;
+    }
+
+    &--btn {
+      @include btnGray;
+      width: 50%;
+      height: 4rem;
+      margin-top: 1.6rem;
+    }
+    p {
+      margin-bottom: 0.8rem;
+    }
+    a {
+      color: $purpleDarkColor;
+      text-decoration: underline;
+    }
+    &--avt {
+      border-radius: 50%;
+      overflow: hidden;
+
+      img {
+        width: 4.6rem;
+        height: 4.6rem;
+        object-fit: cover;
+      }
+    }
+    &--right {
+      width: calc(100% - 4.6rem);
+    }
+
+    &--more {
+      overflow: hidden;
+    }
+
+    &--aboutme {
+      margin-top: 2.4rem;
+      @include dFlexCol(flex-start, flex-start, $gap: 0.8rem);
+    }
+
+    &--author {
+      @include dFlex($just: flex-start, $gap: 1.2rem);
+      margin-bottom: 1.6rem;
+      .content__infor--name {
+        color: $blackColor;
+        text-decoration: none;
+        text-underline-offset: 0.4rem;
+        @include heading3;
+        span {
+          @include textBody1;
+          color: $purpleDarkColor;
+          text-decoration: underline;
+          text-underline-offset: 0.4rem;
+        }
+      }
+    }
+
+    &--user {
+      @include dFlex(flex-start, flex-start, 1.2rem);
+      margin-bottom: 1.6rem;
+      .content__infor--name {
+        text-decoration: none;
+        text-underline-offset: 0.4rem;
+        color: $purpleDarkColor;
+        span,
+        i {
+          color: $blackColor;
+        }
+      }
+    }
+    &--list-media {
+      @include dFlex($just: flex-start, $gap: 1.6rem);
+      .icon-web {
+        &__fb {
+          border-radius: 50%;
+          @include dFlex(center, center);
+          background-color: $whiteColor;
+        }
+        &__in {
+          border-radius: 10%;
+          @include dFlex(center, center);
+          background-color: $whiteColor;
+        }
+        &__youtobe {
+          border-radius: 10%;
+          @include dFlex(center, center);
+        }
+        &__bg {
+          background-color: $grayColor;
+          width: 3.2rem;
+          height: 3.2rem;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+      }
+    }
+  }
+  &__btn &__btn--show-more {
+    color: $purpleDarkColor;
+  }
+  // tab Q&A
+  &__input-search {
+    width: 100%;
+    height: 4.6rem;
+    padding: 1.6rem;
+    border-radius: 0;
+    border: 0.1rem solid $blackColor;
+    outline: none;
+
+    @include textBody1;
+  }
+  &__filter {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.2rem;
+    margin-top: 0.8rem;
+    margin-bottom: 3.2rem;
+
+    ul {
+      list-style-type: none;
+    }
+
+    select {
+      box-sizing: border-box;
+      border: none;
+      &:hover {
+        background-color: $lightColor;
+      }
+    }
+
+    option {
+      padding: 3rem;
+      box-sizing: border-box;
+    }
+
+    &--btn {
+      @include btnPrimary($color: $blackColor, $borderColor: $blackColor);
+      @include heading5;
+      @include dFlexCol(none, none);
+      position: relative;
+
+      @include maxWidth($xSmall) {
+        width: 100%;
+      }
+    }
+
+    &--text {
+      @include heading4;
+    }
+
+    &--group {
+      @include dFlex($gap: 0.8rem);
+
+      @include maxWidth($xSmall) {
+        @include dFlex;
+
+        width: 100%;
+      }
+    }
+  }
+
+  &__popper-list {
+    @include dFlexCol($align: flex-start, $gap: 1.6rem);
+    @include textBody2;
+    @include position($top: 5.2rem, $left: 0);
+    width: 26rem;
+    padding: 0.8rem 0;
+    display: none;
+    box-sizing: border-box;
+    box-shadow: $lightColor 0.2rem;
+    background-color: $whiteColor;
+    border: 0.1rem solid $shadowColor;
+    box-shadow: 0 0.2rem 0.4rem rgba(0, 0, 0, 0.08), 0 0.4rem 1.2rem rgba(0, 0, 0, 0.08);
+    animation: fadeIn 0.2s;
+
+    @include maxWidth($small) {
+      @include position(fixed, auto, 0, 0, 0, 99);
+
+      width: 100%;
+      display: flex;
+      animation: none;
+      transform: translateY(100%);
+      transition: 0.2s;
+
+      &.show-select {
+        transform: translateY(0);
+      }
+    }
+
+    li {
+      @include dFlex(start, center, 0.8rem);
+
+      width: 100%;
+      padding: 0.8rem 1.6rem;
+    }
+    li:hover {
+      color: $purpleDarkColor;
+    }
+
+    input {
+      appearance: none;
+      position: relative;
+
+      &::before {
+        display: block;
+        content: '';
+        width: 1.6rem;
+        height: 1.6rem;
+        border: 0.2rem solid $blackColor;
+      }
+
+      &:checked::after {
+        display: block;
+        position: absolute;
+        top: 50%;
+        right: 50%;
+        transform: translate(50%, -50%);
+        content: '';
+        background: url('https://api.iconify.design/material-symbols/check.svg?color=white') no-repeat center center /
+          2rem;
+        width: 1.6rem;
+        height: 1.6rem;
+        background-color: $blackColor;
+      }
+      &:hover {
+        cursor: pointer;
+      }
+    }
+    label {
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+
+  &__list-select {
+    width: 100%;
+  }
+
+  &__list-overlay {
+    display: none;
+    @include maxWidth($small) {
+      @include position(fixed, 0, 0, 0, 0, 9);
+      display: block;
+      width: 100%;
+      height: 100%;
+      background-color: rgba($blackColor, 0.6);
+      opacity: 0;
+      visibility: hidden;
+      transition: 0.2s;
+    }
+  }
+
+  &__popper-list.show-select + &__list-overlay {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  &__list-close {
+    display: none;
+
+    @include maxWidth($small) {
+      display: block;
+      @include dFlex(center);
+      @include position($top: 0, $right: 1.6rem, $zIndex: 99);
+
+      width: 4.8rem;
+      height: 4.8rem;
+      border-radius: 50%;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08), 0 4px 12px rgba(0, 0, 0, 0.08);
+      font-size: 2.4rem;
+      background-color: $whiteColor;
+      transform: translateY(-50%) scale(0);
+      visibility: hidden;
+      transition: 0.3s;
+      transition-delay: 0.2s;
+    }
+  }
+
+  &__popper-list.show-select &__list-close {
+    transform: translateY(-50%) scale(1);
+    visibility: visible;
+  }
+
+  &__list {
+    margin-bottom: 3.2rem;
+  }
+  &__item {
+    @include dFlex($align: start);
+
+    gap: 1.6rem;
+    padding: 1.6rem 2.4rem;
+
+    &:hover {
+      background-color: $lightColor;
+    }
+    &--avt {
+      width: 3rem;
+      height: 3rem;
+      img {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+      }
+    }
+    &--main {
+      flex: 1;
+    }
+    &--title {
+      @include heading4;
+      margin-bottom: 0.4rem;
+    }
+    &--question {
+      @include textBody2;
+      margin-bottom: 2.4rem;
+    }
+
+    &--list-infor {
+      display: flex;
+      gap: 0.4rem;
+      @include textBody3;
+      span {
+        font-size: 1rem;
+      }
+    }
+    &--circle-up,
+    &--comment {
+      display: flex;
+      line-height: 2.4rem;
+      gap: 0.4rem;
+      cursor: pointer;
+      float: right;
+    }
+    &--circle-up {
+      margin-bottom: 0.8rem;
+    }
+    &--name,
+    &--lecture {
+      color: $purpleDarkColor;
+    }
+    &--name {
+      text-decoration: underline;
+      text-underline-offset: 0.4rem;
+    }
+    &--btn {
+      display: flex;
+      flex-direction: column;
+      align-items: end;
+    }
+  }
+  &__btn--seemore {
+    width: 100%;
+    @include btnPrimary($color: $blackColor, $borderColor: $blackColor);
+    @include heading4;
+    margin-bottom: 3.2rem;
+  }
+  &__btn--ask-new {
+    @include btnPrimary($color: $blackColor, $bgColor: transparent);
+    @include heading4;
+  }
+
+  &__askmore {
+    &--btn-back {
+      @include btnPrimary($borderColor: $blackColor, $color: $blackColor);
+      @include heading4;
+      margin-bottom: 2.4rem;
+    }
+    &--heading {
+      @include heading3;
+      margin-bottom: 1.6rem;
+    }
+    &--toggle-icon {
+      margin-right: 1.6rem;
+      input {
+        position: relative;
+        appearance: none;
+        &::after {
+          width: 20px;
+          height: 20px;
+          content: '';
+          display: block;
+          border-radius: 50%;
+          border: 2px solid $blackColor;
+        }
+
+        &:checked::before {
+          position: absolute;
+          width: 10px;
+          height: 10px;
+          background-color: $blackColor;
+          border-radius: 50%;
+          content: '';
+          display: block;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+        }
+      }
+    }
+
+    &--toggle-input {
+      @include btnPrimary($borderColor: $blackColor, $color: $blackColor);
+      width: 100%;
+      height: 100%;
+      padding: 1.6rem;
+      @include dFlex(flex-start, flex-start);
+      margin-top: 0.8rem;
+      white-space: normal;
+    }
+    &--toggle-title {
+      @include heading4;
+      margin-bottom: 0.8rem;
+    }
+    &--toggle-subtitle {
+      @include textBody2;
+    }
+    &--btn-continue {
+      width: 100%;
+      margin-top: 1.6rem;
+      @include btnPrimary($bgColor: $blackColor);
+      @include heading4($color: $whiteColor);
+    }
+  }
+
+  &__question-ralates-1 {
+    &--btn-back-all {
+      @include btnPrimary($borderColor: $blackColor, $color: $blackColor);
+      @include heading4;
+      margin-bottom: 2.4rem;
+    }
+    &--banner {
+      margin-bottom: 2.4rem;
+      border: 1px solid $grayColor;
+      padding: 1.2rem;
+      ul {
+        @include heading4;
+        margin-bottom: 0.4rem;
+      }
+      li {
+        margin-left: 2.4rem;
+        @include textBody2;
+        margin-bottom: 0.4rem;
+      }
+    }
+
+    &--intructor {
+      padding: 1.2rem;
+      background-color: $lightColor;
+      border: 1px solid $grayColor;
+      margin-bottom: 2.4rem;
+      @include textBody1;
+      @include dFlex(start, $gap: 1.2rem);
+
+      span {
+        color: $purpleDarkColor;
+      }
+    }
+    &--avt {
+      width: 3.2rem;
+      height: 3.2rem;
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 50%;
+      }
+    }
+    &--title {
+      @include heading5;
+      margin-bottom: 1.2rem;
+    }
+    &--title-details {
+      position: relative;
+      width: 100%;
+      @include dFlex;
+      margin-bottom: 1.2rem;
+
+      input {
+        padding: 0 1.6rem;
+        width: 100%;
+        height: 3.4rem;
+        border-radius: 0;
+        border: 0.1rem solid $blackColor;
+        outline: 0;
+      }
+    }
+    &--form {
+      margin-bottom: 1.2rem;
+    }
+    &--text-count {
+      position: absolute;
+      right: 1.2rem;
+      color: $grayColor;
+    }
+    &--btn-publish {
+      width: 100%;
+      @include btnPrimary($bgColor: $blackColor);
+      @include heading4($color: $whiteColor);
+      margin-bottom: 3.2rem;
+    }
+  }
+  &__question-ralates-2 {
+    &--btn-back {
+      @include heading4;
+      @include btnPrimary($borderColor: $blackColor, $color: $blackColor);
+      margin-bottom: 2.4rem;
+    }
+
+    &--title {
+      @include heading4;
+      border: 1px solid $grayColor;
+      padding: 1.2rem;
+    }
+
+    &--question {
+      @include heading3;
+
+      margin: 2.4rem 0;
+    }
+
+    &--banner {
+      @include heading4;
+
+      border: 0.1rem solid $shadowColor;
+      padding: 1.6rem;
+    }
+
+    &--toggle-content {
+      @include dFlex;
+    }
+
+    &--toggle-icon {
+      margin-right: 1.6rem;
+      input {
+        position: relative;
+        appearance: none;
+        &::after {
+          width: 20px;
+          height: 20px;
+          content: '';
+          display: block;
+          border-radius: 50%;
+          border: 2px solid $blackColor;
+        }
+
+        &:checked::before {
+          position: absolute;
+          width: 10px;
+          height: 10px;
+          background-color: $blackColor;
+          border-radius: 50%;
+          content: '';
+          display: block;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+        }
+      }
+    }
+
+    &--toggle-input {
+      @include btnPrimary($borderColor: $blackColor, $color: $blackColor, $height: 5.2rem);
+      @include dFlex(flex-start);
+      width: 100%;
+      margin-top: 0.8rem;
+      align-items: center;
+    }
+    &--toggle-title {
+      @include heading4;
+    }
+  }
+
+  // tab note
+  &__search {
+    @include dFlex(flex-end);
+    flex-direction: row-reverse;
+
+    &--main {
+      @include dFlexCol(center, center);
+      margin-top: 6.4rem;
+    }
+    &--heading {
+      @include heading2;
+    }
+    &--subline {
+      @include textBody1;
+    }
+  }
+  &__note {
+    @include dFlex(flex-end);
+    flex-direction: row-reverse;
+    margin-bottom: 0.8rem;
+  }
+  &__note-form {
+    margin-bottom: 0.8rem;
+  }
+  &__save-note {
+    @include dFlex(flex-end, $gap: 1.2rem);
+    margin-top: 0.8rem;
+  }
+  &__btn-cancel {
+    @include btnPrimary($bgColor: $whiteColor, $color: $blackColor);
+    @include heading4($color: $blackColor);
+  }
+  &__btn-save-note {
+    @include btnPrimary($bgColor: $blackColor);
+    @include heading4($color: $whiteColor);
+
+    &:hover {
+      background-color: $blackLightColor;
+    }
+  }
+  &__btn-search {
+    width: 2.4rem;
+    height: 2.4rem;
+    background-color: $blackColor;
+    padding: 2.3rem;
+
+    &:hover {
+      background-color: $blackLightColor;
+    }
+
+    @include dFlex(center);
+  }
+  &__btn-plus {
+    width: 100%;
+    @include btnPrimary($borderColor: $blackColor);
+    justify-content: space-between;
+    display: flex;
+  }
+  &__span-plus {
+    @include textBody1;
+    color: $grayColor;
+  }
+
+  &__bookmarks {
+    @include textBody1;
+    margin-top: 9.6rem;
+
+    text-align: center;
+  }
+  // tab Announcement
+  &__comment {
+    margin: 1.6rem 1.6rem 1.6rem 0;
+    @include dFlex(flex-start, $gap: 1.6rem);
+
+    &--avt {
+      width: 4.6rem;
+      height: 4.6rem;
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 50%;
+      }
+    }
+
+    &--input {
+      width: 100%;
+
+      input {
+        padding: 1.2rem 1.6rem;
+        width: 100%;
+        height: 4.6rem;
+        border-color: $blackColor;
+        border: 0.1rem solid $blackColor;
+        outline: none;
+        border-radius: 0;
+      }
+    }
+  }
+  &__btn--show-comment {
+    @include heading4;
+    text-decoration: underline;
+    text-underline-offset: 0.6rem;
+    cursor: pointer;
+  }
+  // tab Reviews
+  &__review {
+    &--feedback,
+    &--heading {
+      @include heading2;
+      margin-bottom: 3rem;
+    }
+
+    &--summary {
+      @include dFlex($gap: 3.2rem);
+      margin-bottom: 3rem;
+
+      @include maxWidth($small) {
+        @include dFlexCol(start, start, $gap: 3.2rem);
+      }
+    }
+
+    &--rating-course {
+      width: 12rem;
+      @include dFlexCol(center, center);
+    }
+
+    &--rating-number {
+      color: #b4690e;
+      font-size: 6.4rem;
+      font-weight: 700;
+      letter-spacing: -0.2rem;
+      line-height: 6.4rem;
+    }
+
+    &--rating-star {
+      display: flex;
+    }
+    &--rating-title {
+      @include heading5;
+      color: #b4690e;
+      margin-top: 0.8rem;
+    }
+
+    &--rating-chart {
+      width: calc(100% - 12rem);
+
+      @include maxWidth($small) {
+        width: 100%;
+      }
+    }
+
+    &--rating-tree {
+      width: 100%;
+      @include dFlex;
+    }
+
+    &--rating-tree:last-child {
+      opacity: 0.25;
+      cursor: not-allowed;
+    }
+
+    &--gauge {
+      width: 100%;
+      height: 0.8rem;
+      background-color: $shadowColor;
+      margin-right: 1.6rem;
+    }
+
+    &--gauge-child {
+      height: 0.8rem;
+      background-color: $grayColor;
+      &.gauge-child-1 {
+        width: 84%;
+      }
+      &.gauge-child-2 {
+        width: 15%;
+      }
+      &.gauge-child-3 {
+        width: 1%;
+      }
+      &.gauge-child-4 {
+        width: 0%;
+      }
+      &.gauge-child-5 {
+        width: 0%;
+      }
+    }
+
+    &--filter-start {
+      height: 100%;
+
+      label {
+        @include heading5;
+
+        display: block;
+        margin-bottom: 0.8rem;
+      }
+    }
+
+    &--filter-select {
+      position: relative;
+
+      &::after {
+        position: absolute;
+        top: 50%;
+        right: 1.2rem;
+        transform: translateY(-50%);
+        content: '';
+        display: block;
+        background: url('https://api.iconify.design/material-symbols/keyboard-arrow-down.svg') no-repeat center center /
+          contain;
+        width: 2rem;
+        height: 2rem;
+      }
+
+      select {
+        position: relative;
+        padding: 1.2rem;
+        width: 100%;
+        border-radius: 0;
+        @include textBody1;
+        appearance: none;
+        outline: none;
+        background-color: $whiteColor;
+      }
+    }
+
+    &--rating-percent {
+      width: 10rem;
+      margin-left: 0.4rem;
+      text-decoration: underline;
+
+      @include textBody2($purpleDarkColor);
+    }
+
+    &--controls {
+      @include dFlex(space-between, flex-end, $gap: 2.4rem);
+      margin-bottom: 2.4rem;
+
+      @include maxWidth($small) {
+        flex-wrap: wrap;
+      }
+    }
+
+    &--search {
+      width: 75%;
+
+      @include maxWidth($small) {
+        width: 100%;
+      }
+    }
+
+    &--filter-start {
+      width: 25%;
+
+      @include maxWidth($small) {
+        width: 100%;
+      }
+    }
+
+    &--user {
+      @include dFlex(flex-start, flex-start, 2.4rem);
+      padding-top: 1.6rem;
+      border-top: 0.1rem solid $shadowColor;
+      .content__reviews--name {
+        @include heading4;
+      }
+      &:first-child {
+        border: none;
+      }
+    }
+
+    &--avt {
+      width: 4.8rem;
+      height: 4.8rem;
+      margin-bottom: 3.2rem;
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 50%;
+      }
+    }
+
+    &--right {
+      width: calc(100% - 4.6rem);
+      padding-bottom: 2.4rem;
+    }
+
+    &--comment {
+      margin: 0.8rem 0;
+    }
+
+    &--rating-time {
+      @include dFlex(flex-start, center, 0.4rem);
+    }
+
+    &--time {
+      @include textBody1($grayColor);
+    }
+
+    &--comment {
+      @include textBody1;
+    }
+
+    &--helpful {
+      @include textBody3;
+      margin-bottom: 0.8rem;
+    }
+
+    &--list-vote {
+      @include dFlex(flex-start, center, 1.6rem);
+      span {
+        border: 0.1rem solid $blackColor;
+        padding: 1rem;
+        border-radius: 50%;
+        line-height: 0.4;
+        cursor: pointer;
+      }
+    }
+    &--vote-icon.active-icon {
+      display: inline-block;
+      background-color: $blackColor;
+      color: $whiteColor;
+    }
+    &--btn-report {
+      @include textBody2;
+      text-decoration: underline;
+      cursor: pointer;
+    }
+    &--btn-see-more-reviews {
+      width: 100%;
+      @include btnPrimary($color: $blackColor, $borderColor: $blackColor);
+      @include heading4;
+      margin-bottom: 3.2rem;
+    }
+  }
+  // tab learning tools
+  &__tools {
+    &--heading {
+      @include heading2;
+      margin-bottom: 32px;
+    }
+
+    &--title {
+      @include heading3;
+      margin-bottom: 16px;
+    }
+
+    &--text {
+      @include textBody1;
+      margin-bottom: 8px;
+    }
+
+    &--subtext {
+      @include textBody3($color: $grayColor);
+      margin-bottom: 16px;
+    }
+
+    &--btn-learn-time {
+      display: flex;
+      flex-direction: row;
+      margin-bottom: 0.8rem;
+    }
+
+    &--btn {
+      @include btnPrimary($bgColor: $purpleMediumColor);
+      @include dFlex(center, center, 1.2rem);
+      @include heading4($whiteColor);
+
+      margin-bottom: 3.2rem;
+    }
+
+    &--plus-icon {
+      width: 2rem;
+      height: 2rem;
+    }
+
+    &--heading-form {
+      @include textBody2;
+      font-weight: 700;
+      margin-bottom: 0.4rem;
+    }
+
+    &--filter-phone {
+      display: inline-block;
+      margin-bottom: 8px;
+      position: relative;
+
+      &::after {
+        position: absolute;
+        top: 50%;
+        right: 1.2rem;
+        transform: translateY(-50%);
+        content: '';
+        display: block;
+        background: url('https://api.iconify.design/material-symbols/keyboard-arrow-down.svg') no-repeat center center /
+          contain;
+        width: 2rem;
+        height: 2rem;
+      }
+      select {
+        appearance: none;
+        padding: 1.2rem;
+        width: 44.2rem;
+        @include textBody1;
+        outline: none;
+        background-color: $whiteColor;
+
+        @include maxWidth($small) {
+          width: 100%;
+        }
+      }
+    }
+
+    &--send {
+      @include dFlex(flex-end);
+      flex-direction: row-reverse;
+      margin-bottom: 0.8rem;
+
+      @include maxWidth($xSmall) {
+        width: 100%;
+      }
+    }
+
+    &--input-send {
+      width: 21.5rem;
+      height: 4.6rem;
+      padding: 1.6rem;
+      border: 0.1rem solid $blackColor;
+      border-radius: 0;
+      outline: none;
+
+      @include textBody1;
+
+      @include maxWidth($xSmall) {
+        width: 100%;
+      }
+    }
+
+    &--btn-send {
+      background-color: $blackColor;
+      @include heading4($color: $whiteColor);
+      padding: 1.35rem 2.1rem;
+      @include dFlex(center);
+    }
+  }
+}
+
+.sidebar {
+  width: 25%;
+  background-color: white;
+  top: 5.5rem;
+  right: 0;
+  height: 100%;
+  position: fixed;
+  overflow-y: scroll;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  @include maxWidth($exLarge) {
+    width: $widthSidebar;
+  }
+
+  @include maxWidth($large) {
+    display: none;
+  }
+
+  &.top {
+    top: 0;
+  }
+
+  &--text {
+    padding: 0.8rem 1.6rem;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $shadowColor;
+    }
+  }
+
+  &__content-wrapper {
+    display: none;
+
+    &--top {
+      @include dFlex($just: start);
+      margin-bottom: 1rem;
+      gap: 1rem;
+
+      input {
+        appearance: none;
+        position: relative;
+        cursor: pointer;
+
+        &::before {
+          display: block;
+          content: '';
+          width: 1.6rem;
+          height: 1.6rem;
+          border: 0.2rem solid $blackColor;
+        }
+
+        &:checked::after {
+          display: block;
+          position: absolute;
+          top: 50%;
+          right: 50%;
+          transform: translate(50%, -50%);
+          content: '';
+          width: 1.6rem;
+          height: 1.6rem;
+          background: $blackColor url('https://api.iconify.design/material-symbols/check.svg?color=white&width=12')
+            no-repeat center center / contain;
+        }
+      }
+    }
+
+    &--bottom {
+      @include dFlex($just: space-between);
+    }
+
+    &--bt-left {
+      @include dFlex($just: space-between);
+      gap: 0.5rem;
+      padding-left: 2.5rem;
+    }
+
+    &--bt-right {
+      @include dFlex($just: center, $gap: 0.8rem);
+      @include btnPrimary($height: 2.8rem, $borderColor: $blackColor);
+      @include textBody2;
+      i {
+        font-size: 1rem;
+      }
+    }
+
+    &--title {
+      @include textBody2;
+    }
+    &.open {
+      display: block;
+    }
+  }
+
+  &__content-list {
+    margin-top: 5.6rem;
+
+    @include maxWidth($large) {
+      margin-top: 0;
+    }
+  }
+
+  &__content-item {
+    width: 100%;
+    border: 0.1rem solid $shadowColor;
+
+    &--title {
+      @include heading4;
+      @include dFlex(start);
+      flex: 1;
+    }
+
+    &:not(:last-child) {
+      border-bottom: 0;
+    }
+  }
+
+  &__content-item-panel {
+    @include dFlex($gap: 1.6rem);
+
+    width: 100%;
+    padding: 1.6rem 2.4rem;
+    background-color: $lightColor;
+  }
+
+  &__content-item-panel.open &__content-item-icon {
+    transform: rotate(-180deg);
+  }
+
+  &__content-item-icon {
+    transition: 0.3s;
+  }
+
+  &__content-wrapper {
+    border-top: 0.1rem solid $shadowColor;
+    display: none;
+
+    animation: rotateMenu 1s ease-in-out forwards;
+    transform-origin: top center;
+
+    &--title {
+      @include dFlex(start);
+      flex: 1;
+    }
+
+    &.open {
+      display: block;
+    }
+  }
+}
+.course__content-list {
+  overflow-y: scroll;
+  height: 71rem;
+  padding-top: 5.5rem;
+}
+
+.sidebar__content-heading {
+  position: fixed;
+  overflow-y: hidden;
+  padding: 1.7rem;
+  background-color: $lightColor;
+  z-index: 100;
+  width: 100%;
+  border-left: 0.1rem solid $shadowColor;
+  border-bottom: 0.1rem solid $shadowColor;
+}
+
+.btn-show {
+  @include buttonText;
+  @include dFlex(start, $gap: 0.4rem);
+  padding-left: 2.4rem;
+  margin: 8rem 2rem;
+  cursor: pointer;
+
+  &--less {
+    display: none;
+  }
+
+  &.open &--more {
+    display: none;
+  }
+
+  &.open &--less {
+    display: block;
+  }
+
+  &--icon {
+    @include dFlex(start);
+    font-size: 2rem;
+    transition: 0.3s;
+  }
+
+  &.open &--icon {
+    transform: rotate(-180deg);
+  }
+}
+
+.max-height {
+  height: 100%;
+}
+
+.disable {
+  display: none;
+}
+
+.active {
+  display: block;
+}
+.show-select {
+  display: flex;
+}
+
+.footer__row {
+  @include maxWidth(1400px) {
+    flex-wrap: wrap;
+  }
+}

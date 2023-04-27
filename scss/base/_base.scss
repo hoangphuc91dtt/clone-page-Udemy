@@ -1,0 +1,85 @@
+@import '../../scss/variables/colors';
+@import '../../scss/variables/size';
+
+@import '../../scss/mixins/typo';
+@import '../../scss/mixins/display';
+@import '../../scss/mixins/responsive';
+@import '../../scss/mixins/position';
+@import '../../scss/mixins/button';
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 62.5%;
+
+  @include maxWidth($medium) {
+    font-size: 56.25%;
+  }
+
+  @include maxWidth($small) {
+    font-size: 50%;
+  }
+}
+
+body {
+  @include textBody1;
+}
+
+.container-lg {
+  max-width: 134rem;
+  margin: 0 auto;
+
+  @include maxWidth($xSmall) {
+    min-width: 100%;
+  }
+}
+
+.container-ml {
+  max-width: 118.4rem;
+  margin: 0 auto;
+}
+
+.heading-big {
+  @include heading1;
+
+  padding: 4.8rem 0;
+
+  @include maxWidth($medium) {
+    padding: 2.4rem 0;
+  }
+}
+
+.heading-second {
+  @include heading2;
+
+  padding-bottom: 1.6rem;
+
+  @include maxWidth($medium) {
+    margin-top: 2.4rem;
+  }
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+a,
+button {
+  border: 0;
+  outline: 0;
+  cursor: pointer;
+}
+
+.slick-arrow {
+  &::before {
+    display: none !important;
+  }
+}
